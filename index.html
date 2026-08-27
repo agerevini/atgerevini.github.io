@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Tax preparation for the Italian community in Los Angeles and beyond. Serving Italians in Southern California and US citizens living in Italy." />
+  <title>Alessandra T Gerevini · Tax Preparation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      /* ── Palette - from reference images ── */
+      --terra:      #C45B31;   /* Rusty Orange    */
+      --terra-dk:   #A44842;   /* Terracotta      */
+      --rust:       #6B2A18;   /* deep rust - dark sections */
+      --mustard:    #DA8825;   /* Butterscotch    */
+      --sand:       #E8BC89;   /* Sand Dune       */
+      --sand-pale:  #F5EAD8;   /* very pale sand bg */
+      --cream:      #F7F2EB;   /* page background */
+
+      /* ── Browns - replace all blacks ── */
+      --brown:      #3A1E0E;   /* deepest - headings, nav */
+      --brown-md:   #5A3420;   /* body text English */
+      --brown-it:   #7A4E30;   /* Italian text - warm, readable */
+      --brown-lt:   #A07050;   /* muted labels */
+
+      --white:      #FFFCF8;
+      --rule:       #DECCB4;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--brown-md);
+      font-size: 17px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.2rem 3.5rem;
+      background: rgba(247, 242, 235, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--rule);
+    }
+    .nav-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem; font-weight: 400;
+      letter-spacing: 0.04em;
+      color: var(--brown); text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.74rem; font-weight: 400;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--brown-lt); text-decoration: none; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--terra); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 0 3.5rem 5rem;
+      position: relative; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 2;
+      background: linear-gradient(
+        to top right,
+        rgba(247,242,235,0.92) 0%,
+        rgba(247,242,235,0.65) 45%,
+        rgba(247,242,235,0.1) 100%
+      );
+    }
+    /* PHOTO SLOT 1 - hero background texture
+       Uncomment to use: <img class="hero-photo" src="your-image.jpg" alt="" /> */
+    .hero-photo {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; object-position: center 40%; z-index: 1; opacity: 1; mix-blend-mode: normal;
+    }
+    .hero-content {
+      position: relative; z-index: 3;
+      max-width: 1100px; margin: 0 auto; width: 100%; padding-top: 8rem;
+    }
+    .hero-eyebrow {
+      font-size: 0.7rem; font-weight: 500;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--terra); margin-bottom: 1.8rem;
+    }
+    .hero-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.2rem, 6.5vw, 6.5rem);
+      font-weight: 400; line-height: 1.0;
+      color: var(--brown); letter-spacing: -0.01em;
+      white-space: nowrap; margin-bottom: 0.2em;
+    }
+    .hero-name em { font-style: italic; color: var(--terra); }
+
+    .hero-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.25rem, 2.2vw, 1.75rem);
+      font-weight: 400; color: var(--brown-md);
+      line-height: 1.4; margin-bottom: 0.3rem;
+    }
+    .hero-tagline-it {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(1rem, 1.6vw, 1.25rem);
+      font-weight: 400; color: var(--brown-it);
+      line-height: 1.5; margin-bottom: 2.5rem;
+    }
+    .hero-rule { width: 3rem; height: 2px; background: var(--mustard); margin-bottom: 2.5rem; }
+
+    .hero-sub {
+      font-size: 1.05rem; color: var(--brown-md);
+      max-width: 460px; line-height: 1.75; margin-bottom: 0.4rem;
+    }
+    .hero-sub-it {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.05rem; font-weight: 400; color: var(--brown-it);
+      max-width: 460px; line-height: 1.75; margin-bottom: 2.8rem;
+    }
+    .hero-byline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem; font-weight: 400;
+      color: var(--brown-md); letter-spacing: 0.03em;
+      margin-bottom: 2rem; font-style: italic;
+    }
+    .btn {
+      display: inline-block; font-size: 0.74rem; font-weight: 500;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 0.9rem 2rem; text-decoration: none; transition: all 0.2s;
+    }
+    .btn-fill { background: var(--terra); color: var(--white); }
+    .btn-fill:hover { background: var(--terra-dk); }
+    .btn-ghost { border: 1.5px solid var(--brown-md); color: var(--brown-md); }
+    .btn-ghost:hover { background: var(--brown-md); color: var(--white); }
+
+    /* ── PHOTO STRIP ──
+       PHOTO SLOT 2 - full-width atmospheric image
+       Replace placeholder div with: <img src="your-image.jpg" alt="" />
+       Suggestion: Italian doorway, olive trees, terracotta tiles, morning desk */
+    .photo-strip { width: 100%; height: 500px; overflow: hidden; }
+    .photo-strip img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .photo-strip-ph {
+      width: 100%; height: 100%;
+      background: linear-gradient(110deg, var(--sand-pale), var(--sand), #E0C8A0);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .photo-strip-ph span {
+      font-size: 0.68rem; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--terra); opacity: 0.45;
+    }
+
+    /* ── ABOUT ── */
+    .about-wrap { background: var(--cream); }
+    .about-inner { max-width: 1100px; margin: 0 auto; padding: 6rem 3.5rem; }
+
+    .eyebrow {
+      font-size: 0.68rem; font-weight: 500;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--terra); margin-bottom: 3rem;
+    }
+
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: start;
+    }
+
+    .about-photo {
+      aspect-ratio: 4/5; overflow: hidden;
+      background: transparent; position: relative;
+    }
+    .about-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center 15%;
+      display: block;
+    }
+    .about-text h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 3.5vw, 3.2rem);
+      font-weight: 400; line-height: 1.1;
+      color: var(--brown); margin-bottom: 1.4rem;
+    }
+    .about-text p {
+      font-size: 1.05rem; color: var(--brown-md);
+      line-height: 1.85; margin-bottom: 1rem;
+    }
+    .about-it-block p {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.05rem; font-weight: 400;
+      color: var(--brown-it); line-height: 1.85; margin-bottom: 0.8rem;
+    }
+    .about-it-block {
+      margin-top: 2rem; padding-top: 1.5rem;
+      border-top: 1px solid var(--rule);
+    }
+    .about-it-block p {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.95rem; font-weight: 400;
+      color: var(--brown-it); line-height: 1.85; margin-bottom: 0.8rem;
+    }
+
+    /* PHOTO SLOT 3 - portrait or still life
+       Replace placeholder div with: <img src="your-photo.jpg" alt="Alessandra T Gerevini" />
+       Suggestion: portrait, coffee + notebook, pen on paper */
+    .about-photo {
+      aspect-ratio: 4/5; overflow: hidden;
+      background: var(--sand-pale); position: relative;
+    }
+    .about-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; display: block; }
+    .about-photo-ph {
+      width: 100%; height: 100%;
+      background: linear-gradient(160deg, var(--sand-pale), var(--sand));
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 0.5rem;
+    }
+    .about-photo-ph span {
+      font-size: 0.68rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--terra); opacity: 0.5;
+    }
+
+    /* ── WHO ── */
+    .who-wrap { background: var(--cream); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+    .who-inner { max-width: 1100px; margin: 0 auto; padding: 5rem 3.5rem; }
+    .who-layout {
+      display: grid; grid-template-columns: 240px 1fr;
+      gap: 5rem; align-items: start;
+    }
+    .who-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      font-weight: 400; line-height: 1.15; color: var(--brown);
+      position: sticky; top: 8rem;
+    }
+    .who-list { list-style: none; border-top: 1px solid var(--rule); }
+    .who-list li {
+      padding: 1.8rem 0; border-bottom: 1px solid var(--rule);
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 2rem; align-items: baseline;
+    }
+    .who-en { font-size: 1.05rem; color: var(--brown-md); line-height: 1.5; }
+    .who-it {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.05rem; font-weight: 400;
+      color: var(--brown-it); line-height: 1.5;
+    }
+
+    /* ── PHOTO TRIO ──
+       PHOTO SLOTS 4 5 6 - three images side by side
+       Replace each ph div with: <img src="your-image.jpg" alt="" />
+       Suggestion: Italian architecture · desk detail · texture / ceramics */
+    .photo-trio {
+      display: grid; grid-template-columns: 1.2fr 0.9fr 1fr;
+      gap: 4px; height: 340px;
+    }
+    .photo-trio-cell { overflow: hidden; position: relative; }
+    .photo-trio-cell img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.4s ease;
+    }
+    .photo-trio-cell:first-child img { object-position: center 60%; }
+    .photo-trio-cell:nth-child(2) img { object-position: center top; }
+    .photo-trio-cell:last-child img { object-position: center 30%; }
+    .photo-trio-cell:hover img { transform: scale(1.04); }
+    .ph-trio {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .ph-trio span {
+      font-size: 0.62rem; letter-spacing: 0.18em;
+      text-transform: uppercase; opacity: 0.45;
+    }
+    .ph-a { background: var(--sand-pale); }
+    .ph-a span { color: var(--terra); }
+    .ph-b { background: #E8D0B0; }
+    .ph-b span { color: var(--terra-dk); }
+    .ph-c { background: var(--sand); }
+    .ph-c span { color: var(--rust); }
+
+    /* ── SERVICES ── */
+    .services-wrap { background: var(--sand-pale); }
+    .services-inner { max-width: 1100px; margin: 0 auto; padding: 6rem 3.5rem; }
+    .services-head {
+      display: grid; grid-template-columns: 1fr 1.6fr;
+      gap: 4rem; margin-bottom: 4rem; align-items: start;
+    }
+    .services-head h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 3.5vw, 3.2rem);
+      font-weight: 400; line-height: 1.1; color: var(--brown);
+    }
+    .services-note { font-size: 1.05rem; color: var(--brown-md); line-height: 1.8; }
+    .services-note-it {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.05rem; font-weight: 400;
+      color: var(--brown-it); line-height: 1.8; margin-top: 0.5rem;
+    }
+    .services-list { list-style: none; border-top: 1px solid var(--rule); }
+    .services-list li {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 2rem; padding: 1.3rem 0;
+      border-bottom: 1px solid var(--rule); align-items: baseline;
+    }
+    .svc-en { font-size: 1.05rem; color: var(--brown); }
+    .svc-form {
+      display: inline-block;
+      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.07em;
+      padding: 0.15rem 0.5rem; margin-left: 0.45rem; vertical-align: middle;
+      background: var(--terra); color: var(--white);
+    }
+    .svc-it {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.05rem; font-weight: 400; color: var(--brown-it);
+    }
+    .services-footer-note {
+      margin-top: 2rem;
+      font-family: 'Outfit', sans-serif;
+      font-size: 1rem; font-weight: 400; color: var(--brown-lt);
+    }
+
+    /* ── CONTACT ── */
+    .contact-wrap { background: var(--rust); }
+    .contact-inner { max-width: 1100px; margin: 0 auto; padding: 6rem 3.5rem; }
+    .contact-eyebrow {
+      font-size: 0.68rem; font-weight: 500;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--sand); margin-bottom: 3rem;
+    }
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: start;
+    }
+    .contact-left h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+      font-weight: 400; line-height: 1.1;
+      color: var(--white); margin-bottom: 0.4rem;
+    }
+    .contact-left h2 em { font-style: italic; color: var(--sand); }
+    .contact-left .sub-it {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1rem; font-weight: 400;
+      color: var(--sand); opacity: 0.8; margin-bottom: 2rem;
+    }
+    .contact-left p {
+      font-size: 0.92rem; color: rgba(255,255,255,0.6);
+      line-height: 1.8; margin-bottom: 0.5rem;
+    }
+    .contact-left .p-it {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.92rem; font-weight: 400;
+      color: var(--sand); opacity: 0.65;
+    }
+    .contact-items { display: flex; flex-direction: column; gap: 2.2rem; }
+    .contact-label {
+      font-size: 0.66rem; font-weight: 500;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--mustard); margin-bottom: 0.3rem;
+    }
+    .contact-val { font-size: 0.9rem; color: var(--white); }
+    .contact-val a {
+      color: var(--white); text-decoration: none;
+      border-bottom: 1px solid var(--terra); padding-bottom: 1px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .contact-val a:hover { color: var(--sand); border-color: var(--sand); }
+    .contact-sub {
+      font-size: 0.8rem; color: rgba(255,255,255,0.3);
+      margin-top: 0.25rem;
+      font-family: 'Outfit', sans-serif; font-weight: 300;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--brown);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 2rem 3.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.9rem; color: rgba(255,255,255,0.2);
+    }
+    .footer-ctec {
+      font-size: 0.7rem; color: rgba(255,255,255,0.12);
+      text-align: right; line-height: 1.6;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 800px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1.5rem; }
+      .hero { padding: 0 1.5rem 4rem; }
+      .hero-name { white-space: normal; font-size: clamp(2.4rem, 10vw, 3.5rem); }
+      .hero-content { padding-top: 7rem; }
+      .about-inner, .who-inner,
+      .services-inner, .contact-inner { padding: 4rem 1.5rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-photo { aspect-ratio: 16/9; }
+      .who-layout { grid-template-columns: 1fr; gap: 2rem; }
+      .who-heading { position: static; }
+      .who-list li { grid-template-columns: 1fr; gap: 0.4rem; }
+      .photo-trio { grid-template-columns: 1fr; height: auto; }
+      .photo-trio-cell { height: 220px; }
+      .services-head { grid-template-columns: 1fr; gap: 1.5rem; }
+      .services-list li { grid-template-columns: 1fr; gap: 0.3rem; }
+      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .photo-strip { height: 300px; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; padding: 1.5rem; }
+      .footer-ctec { text-align: center; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-name" href="#">Alessandra T Gerevini</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+
+  <!-- HERO -->
+  <section class="hero">
+    <img class="hero-photo" src="8rz.jpg" alt="" />
+    <div class="hero-bg"></div>
+
+    <div class="hero-content">
+      <p class="hero-eyebrow">CTEC Registered Tax Preparer · Los Angeles, CA</p>
+
+      <h1 class="hero-name">Tax Preparation<br><em>for the Italian Community</em></h1>
+
+      <p class="hero-tagline">In Los Angeles and beyond - in English and Italian.</p>
+      <p class="hero-tagline-it">A Los Angeles e non solo - in inglese e in italiano.</p>
+
+      <div class="hero-rule"></div>
+
+      <p class="hero-sub">Serving Italians in Southern California and US citizens living in Italy, including expat filings, FBAR, and the US&#8209;Italy tax treaty.</p>
+      <p class="hero-sub-it">Al servizio degli italiani in Southern California e dei cittadini americani residenti in Italia.</p>
+
+      <p class="hero-byline">Alessandra T Gerevini</p>
+
+      <div class="btn-row">
+        <a class="btn btn-fill" href="#contact">Get in touch</a>
+        <a class="btn btn-ghost" href="#services">Services</a>
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <!-- ABOUT -->
+  <div class="about-wrap" id="about">
+    <div class="about-inner">
+      <p class="eyebrow">About · Chi sono</p>
+      <div class="about-grid">
+
+        <div class="about-text">
+          <h2>Two countries.<br>One preparer.</h2>
+          <p>I am a CTEC-registered tax preparer based in the Los Angeles area, with experience preparing federal and California state returns for individuals, expats, and Italian nationals living in the United States.</p>
+          <p>I work with clients navigating the tax obligations that come with living between two countries - foreign income, FBAR filings, the US-Italy tax treaty, and the filing requirements that apply to American citizens living abroad.</p>
+          <p>Returns are prepared in English. Consultations can be conducted entirely in Italian.</p>
+          <div class="about-it-block">
+            <p>Sono una tax preparer registrata CTEC nell'area di Los Angeles, con esperienza nella preparazione di dichiarazioni fiscali federali e statali californiane per privati, expat e cittadini italiani residenti negli Stati Uniti.</p>
+            <p>Lavoro con chi deve gestire gli obblighi fiscali che derivano dal vivere tra due paesi - redditi esteri, FBAR, il trattato fiscale USA-Italia, e gli obblighi dichiarativi dei cittadini americani residenti all'estero.</p>
+            <p>Le dichiarazioni vengono preparate in inglese. Le consulenze possono svolgersi interamente in italiano.</p>
+          </div>
+        </div>
+
+        <div class="about-photo">
+          <img src="portrait.jpg" alt="Alessandra T Gerevini" />
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- WHO I HELP -->
+  <div class="who-wrap">
+    <div class="who-inner">
+      <div class="who-layout">
+        <h2 class="who-heading">Who I<br>work with</h2>
+        <ul class="who-list">
+          <li>
+            <span class="who-en">Italians living in the Los Angeles area who need US federal and California state returns.</span>
+            <span class="who-it">Italiani nell'area di Los Angeles che necessitano di dichiarazioni federali e statali californiane.</span>
+          </li>
+          <li>
+            <span class="who-en">US citizens who have returned to Italy and still have American filing obligations.</span>
+            <span class="who-it">Cittadini americani rientrati in Italia che hanno ancora obblighi fiscali negli Stati Uniti.</span>
+          </li>
+          <li>
+            <span class="who-en">Individuals with foreign bank accounts, foreign income, or assets in Italy.</span>
+            <span class="who-it">Persone con conti bancari esteri, redditi esteri o patrimoni in Italia.</span>
+          </li>
+          <li>
+            <span class="who-en">Anyone who prefers to discuss their taxes in Italian.</span>
+            <span class="who-it">Chi preferisce parlare delle proprie tasse in italiano.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- PHOTO TRIO
+       SLOTS 4 5 6 - three images side by side
+       To use: replace each ph-trio div with <img src="your-image.jpg" alt="" />
+       Suggestion: Italian architecture · desk detail · ceramics / olive branches / texture -->
+
+  <!-- SERVICES -->
+  <div class="services-wrap" id="services">
+    <div class="services-inner">
+      <p class="eyebrow">Services · Servizi</p>
+      <div class="services-head">
+        <h2>What I prepare</h2>
+        <div>
+          <p class="services-note">Fees depend on the complexity of your return. Initial consultations are free - in English or Italian.</p>
+          <p class="services-note-it">Le tariffe dipendono dalla complessità della dichiarazione. Le consulenze iniziali sono gratuite.</p>
+        </div>
+      </div>
+      <ul class="services-list">
+        <li>
+          <span class="svc-en">Federal income tax return <span class="svc-form">Form 1040</span></span>
+          <span class="svc-it">Dichiarazione federale dei redditi</span>
+        </li>
+        <li>
+          <span class="svc-en">California state return <span class="svc-form">Form 540</span></span>
+          <span class="svc-it">Dichiarazione statale californiana</span>
+        </li>
+        <li>
+          <span class="svc-en">Foreign Earned Income Exclusion <span class="svc-form">Form 2555</span></span>
+          <span class="svc-it">Esclusione del reddito guadagnato all'estero</span>
+        </li>
+        <li>
+          <span class="svc-en">Foreign Tax Credit <span class="svc-form">Form 1116</span></span>
+          <span class="svc-it">Credito d'imposta estero</span>
+        </li>
+        <li>
+          <span class="svc-en">FBAR filing <span class="svc-form">FinCEN 114</span></span>
+          <span class="svc-it">Dichiarazione conti bancari esteri</span>
+        </li>
+        <li>
+          <span class="svc-en">Foreign financial asset reporting <span class="svc-form">Form 8938 / FATCA</span></span>
+          <span class="svc-it">Dichiarazione attività finanziarie estere</span>
+        </li>
+        <li>
+          <span class="svc-en">Self-employment income <span class="svc-form">Schedule C</span></span>
+          <span class="svc-it">Reddito da lavoro autonomo</span>
+        </li>
+        <li>
+          <span class="svc-en">Rental income <span class="svc-form">Schedule E</span></span>
+          <span class="svc-it">Redditi da locazione</span>
+        </li>
+      </ul>
+      <p class="services-footer-note">I work with clients in person in the Los Angeles area and remotely anywhere in the US or Italy. · Lavoro con clienti di persona nell'area di Los Angeles e da remoto ovunque negli Stati Uniti o in Italia.</p>
+    </div>
+  </div>
+
+
+  <!-- CONTACT -->
+  <div class="contact-wrap" id="contact">
+    <div class="contact-inner">
+      <p class="contact-eyebrow">Contact · Contatti</p>
+      <div class="contact-grid">
+        <div class="contact-left">
+          <h2>Questions about<br>your <em>taxes?</em></h2>
+          <p class="sub-it">Domande sulla tua situazione fiscale?</p>
+          <p>Get in touch to discuss your situation. Initial consultations are free, in English or Italian.</p>
+          <p class="p-it">Contattami per parlare della tua situazione. La prima consulenza è gratuita, in inglese o in italiano.</p>
+        </div>
+        <div class="contact-items">
+          <div>
+            <p class="contact-label">Email</p>
+            <p class="contact-val"><a href="mailto:alessandratgerevini@gmail.com">alessandratgerevini@gmail.com</a></p>
+          </div>
+          <div>
+            <p class="contact-label">Location</p>
+            <p class="contact-val">Los Angeles area, California</p>
+            <p class="contact-sub">Also serving clients remotely in Italy · Anche da remoto in Italia</p>
+          </div>
+          <div>
+            <p class="contact-label">Languages</p>
+            <p class="contact-val">English · Italiano</p>
+          </div>
+          <div>
+            <p class="contact-label">Availability</p>
+            <p class="contact-val">Tax season &amp; extensions year-round</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-name">Alessandra T Gerevini · Tax Preparation</span>
+    <span class="footer-ctec">CTEC Registered Tax Preparer · CTEC ID: [your ID]<br>CTEC registration does not imply endorsement by the State of California.</span>
+  </footer>
+
+</body>
+</html>
